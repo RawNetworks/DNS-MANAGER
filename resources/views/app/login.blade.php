@@ -125,7 +125,6 @@
     </style>
 </head>
 <body>
-<h1>Welcome to DNS Manager</h1>
 <div class="login-card">
     <h2>Welcome Back</h2>
     <p>Sign in to your account</p>
