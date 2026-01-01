@@ -7,7 +7,7 @@ Route::get('/', function () {
     return redirect()->route('login');
 });
 
-Route::prefix('auth')->group(function () {
+Route::prefix('cp')->group(function () {
 
     Route::middleware('guest')->group(function () {
         Route::get('login', [LoginController::class, 'index'])->name('login');
@@ -15,6 +15,7 @@ Route::prefix('auth')->group(function () {
     });
 
     Route::middleware('auth')->group(function () {
-        
+        Route::get('dashboard', [DashBoardController::class, 'index'])->name('dashboard');
+        Route::post('logout', [LoginController::class, 'logout'])->name('logout');
     });
 });
