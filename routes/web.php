@@ -14,6 +14,6 @@ Route::prefix('auth')->group(function () {
         return redirect()->route('register');
     }
     // Auth Routes
-    Route::get('login/', [LoginController::class, 'login'])->name('login');
+    Route::get('login/', [LoginController::class, 'index'])->name('login');
     Route::get('register/', [LoginController::class, 'login'])->name('register');
 })->name('auth');
