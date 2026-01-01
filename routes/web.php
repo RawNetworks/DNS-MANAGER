@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
 Route::redirect('/', function () {
-    return route('auth');
+    return redirect()->route('auth');
 });
 
 Route::prefix('auth')->group(function () {
