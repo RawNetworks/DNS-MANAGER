@@ -1,19 +1,20 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\LoginController;
 
-Route::redirect('/', function () {
-    return redirect()->route('auth');
+Route::get('/', function () {
+    return redirect()->route('login');
 });
 
 Route::prefix('auth')->group(function () {
-    if (!Auth::User()) {
-        return redirect()->route('login');
-    } else {
-        return redirect()->route('register');
-    }
-    // Auth Routes
-    Route::get('login/', [LoginController::class, 'index'])->name('login');
-    Route::get('register/', [LoginController::class, 'login'])->name('register');
-})->name('auth');
+
+    Route::middleware('guest')->group(function () {
+        Route::get('login', [LoginController::class, 'index'])->name('login');
+        Route::get('register', [LoginController::class, 'register'])->name('register');
+    });
+
+    Route::middleware('auth')->group(function () {
+        
+    });
+});
