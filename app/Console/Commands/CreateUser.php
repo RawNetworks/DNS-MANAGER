@@ -34,7 +34,7 @@ class CreateUser extends Command
                 'role'     => $role,
             ]);
 
-            $this->success("Benutzer {$username} wurde erfolgreich als '{$role}' angelegt!");
+            $this->info("Benutzer {$username} wurde erfolgreich als '{$role}' angelegt!");
 
         } catch (\Exception $e) {
             $this->error("Fehler beim Erstellen: " . $e->getMessage());
