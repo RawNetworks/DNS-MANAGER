@@ -11,6 +11,7 @@ Route::prefix('cp')->group(function () {
 
     Route::middleware('guest')->group(function () {
         Route::get('login', [LoginController::class, 'index'])->name('login');
+        Route::post('login', [LoginController::class, 'login'])->name('login_post');
         Route::get('register', [LoginController::class, 'register'])->name('register');
     });
 

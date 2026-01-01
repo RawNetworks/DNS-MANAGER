@@ -122,14 +122,36 @@
             margin-top: 12px;
             font-size: 12px;
         }
+        .alert {
+            padding: 12px 16px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .alert-danger {
+            background-color: #fef2f2; /* Light red background */
+            border: 1px solid #f87171; /* Red border */
+            color: #991b1b;           /* Dark red text */
+        }
     </style>
 </head>
 <body>
 <div class="login-card">
     <h2>Welcome Back</h2>
     <p>Sign in to your account</p>
-
-    <form action="/login" method="POST">
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul style="margin: 0; padding-left: 20px;">
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+    <form action="{{route('login_post')}}" method="POST">
+        @csrf
         <div class="form-group">
             <label for="email">Email Address</label>
             <input type="email" id="email" name="email" placeholder="name@company.com" required>
